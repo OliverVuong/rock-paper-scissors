@@ -68,6 +68,22 @@ function playRound(e){
     compSelectionDisplay.textContent = "Opponent: " + computerSelection;
     playerWinDisplay.textContent = "Player Win Count: " + playerWins;
     computerWinDisplay.textContent = "Computer Win Count: " + computerWins;
+    announceWinner(playerWins, computerWins);
+}
+
+function announceWinner(playerWins, computerWins){
+    if(playerWins < 5 && computerWins < 5){
+        return;
+    }
+
+    const para = document.createElement('p');
+    if(playerWins == 5){
+        para.textContent = "Congratulations on 5 wins!";
+    } else if(computerWins == 5){
+        para.textContent = "Computer reached 5 wins first.";
+    }
+    const body = document.querySelector('body');
+    body.append(para);
 }
 
 function game(){
